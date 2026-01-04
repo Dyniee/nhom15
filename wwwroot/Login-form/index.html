@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Đăng nhập - Chat App</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="css/styleLogin.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="login-wrap">
+        <h3>Chào bạn! 👋</h3>
+        <span class="sub-title">Đăng nhập để kết nối với bạn bè</span>
+
+        <div class="center">
+            <div class="ear ear--left"></div>
+            <div class="ear ear--right"></div>
+            <div class="face">
+                <div class="eyes">
+                    <div class="eye eye--left"><div class="glow"></div></div>
+                    <div class="eye eye--right"><div class="glow"></div></div>
+                </div>
+                <div class="nose">
+                    <svg width="38.161" height="22.03"><path d="M2.017 10.987Q-.563 7.513.157 4.754C.877 1.994 2.976.135 6.164.093 16.4-.04 25.293-.056 32.02 2.16c3.15 1.037 5.238 3.111 5.92 6.06.683 2.95-.79 6.786-4.234 10.256-.49.49-1.215.486-1.694-.009a6.374 6.374 0 0 1-1.804-3.214c-.156-.641-.837-1.05-1.48-1.07-.643-.02-1.282.34-1.475.976a4.935 4.935 0 0 0-.132 1.48c.023 1.07-.907 1.948-1.977 2.004-1.87.098-3.541.037-4.822.037-1.42 0-3.32.033-5.32-.08-1.066-.06-1.992-.962-1.91-2.027.08-1.056.88-1.947 1.936-2.037.643-.055 1.157-.59 1.146-1.233-.011-.643-.537-1.163-1.18-1.177a6.27 6.27 0 0 0-3.832 1.196c-.52.37-1.26.24-1.613-.27Z" /></svg>
+                    <div class="glow"></div>
+                </div>
+                <div class="mouth">
+                    <svg class="smile"><path d="M3.92.595a.75.75 0 0 1 .16 1.492c-1.12.12-2.183.19-3.08.19-1.026 0-2.32-.088-3.722-.266a.75.75 0 0 1 .188-1.488A23.86 23.86 0 0 0 1 .715c1.01 0 2.072-.046 2.92-.12Z" /></svg>
+                    <div class="tongue"><div class="glare"></div></div>
+                </div>
+            </div>
+            <div class="hands">
+                <div class="hand hand--left"><div class="finger"></div><div class="finger"></div><div class="finger"></div></div>
+                <div class="hand hand--right"><div class="finger"></div><div class="finger"></div><div class="finger"></div></div>
+            </div>
+        </div>
+        <form class="login-form" style="margin-top: 20px;">
+            <div class="form-group">
+                <input type="text" class="form-control username" placeholder="Tên đăng nhập" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control password" placeholder="Mật khẩu" required autocomplete="current-password">
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <label class="checkbox-wrap">
+                    <input type="checkbox" checked> Ghi nhớ tôi
+                </label>
+                <a href="#" class="forgot-pass">Quên mật khẩu?</a>
+            </div>
+
+            <div class="form-group">
+                <button type="button" onclick="login()" class="btn-primary">ĐĂNG NHẬP</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/scriptLogin.js"></script>
+
+</body>
+</html>

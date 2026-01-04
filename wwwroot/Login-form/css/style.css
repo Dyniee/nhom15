@@ -1,0 +1,107 @@
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Nền Gradient tím xanh */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+/* Khung đăng nhập */
+.login-wrap {
+    background: rgba(255, 255, 255, 0.95); /* Màu trắng hơi trong suốt */
+    width: 400px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    position: relative;
+    text-align: center;
+}
+
+.login-wrap h3 {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.sub-title {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 30px;
+    display: block;
+}
+
+/* Form input */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-control {
+    width: 100%;
+    height: 50px;
+    border: 2px solid #eee;
+    border-radius: 25px; /* Bo tròn kiểu viên thuốc */
+    padding: 0 20px;
+    font-size: 14px;
+    transition: all 0.3s;
+    outline: none;
+    background: #f9f9f9;
+}
+
+.form-control:focus {
+    border-color: #764ba2;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.1);
+}
+
+/* Nút Đăng nhập */
+.btn-primary {
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(118, 75, 162, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Checkbox & Forgot Password */
+.checkbox-wrap {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #666;
+    cursor: pointer;
+}
+.checkbox-wrap input {
+    margin-right: 5px;
+    accent-color: #764ba2;
+}
+
+.forgot-pass {
+    font-size: 13px;
+    color: #764ba2;
+    text-decoration: none;
+    font-weight: 500;
+}
+.forgot-pass:hover {
+    text-decoration: underline;
+}

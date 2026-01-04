@@ -1,0 +1,12 @@
+# Bỏ qua thư mục build
+bin/
+obj/
+
+# Bỏ qua thư mục cấu hình của Editor (VS Code, Visual Studio)
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Bỏ qua file cấu hình chứa bí mật (nếu có)
+appsettings.Development.json

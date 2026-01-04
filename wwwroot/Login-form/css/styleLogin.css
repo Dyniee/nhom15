@@ -1,0 +1,201 @@
+:root {
+  --bg-color: #f8f9fd;
+  --white: #ffffff;
+  --black: #000000;
+  --primary: #e3b04b;
+  --placeholder: #999;
+}
+
+/* Căn chỉnh vị trí con gấu */
+.center {
+  position: relative;
+  top: 20px; /* Điều chỉnh vị trí gấu so với form */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background-color: transparent;
+  z-index: 1; /* Nằm trên nền nhưng dưới form nếu cần */
+}
+
+/* --- CẤU TRÚC ĐẦU GẤU --- */
+.face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  height: 160px;
+  background-color: var(--white);
+  border-radius: 50%;
+  border: 4px solid var(--black);
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.ear {
+  position: absolute;
+  top: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--black);
+  border-radius: 50%;
+  z-index: 5;
+}
+.ear--left { left: 10px; }
+.ear--right { right: 10px; }
+
+/* --- MẮT --- */
+.eyes {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 15;
+}
+
+.eye {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-color: var(--black);
+  border-radius: 50%;
+}
+
+.eye .glow {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--white);
+  border-radius: 50%;
+}
+
+/* --- MŨI --- */
+.nose {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+}
+.nose svg { width: 30px; }
+.nose .glow {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  width: 8px;
+  height: 4px;
+  background-color: var(--white);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* --- MIỆNG --- */
+.mouth {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+}
+.mouth svg { width: 40px; fill: none; stroke: var(--black); stroke-width: 3px; stroke-linecap: round; }
+
+/* Lưỡi (khi không nhập pass) */
+.tongue {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 20px;
+  height: 16px;
+  background-color: #ff6b6b;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: 0.3s;
+  opacity: 0; /* Mặc định ẩn, hiện khi focus */
+}
+.tongue.breath {
+  animation: breath 1s infinite alternate;
+  opacity: 1;
+}
+
+@keyframes breath {
+  0% { height: 16px; }
+  100% { height: 20px; }
+}
+
+/* --- TAY (Che mắt) --- */
+.hands {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 180px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 20;
+  pointer-events: none; /* Không chặn click chuột vào form */
+}
+
+.hand {
+  position: relative;
+  width: 70px;
+  height: 80px;
+  background-color: var(--black);
+  border-radius: 30px 30px 0 0;
+  transform-origin: bottom center;
+  transition: transform 0.4s ease-in-out;
+}
+
+.hand--left {
+  transform: rotate(-150deg) translate(10px, 80px); 
+}
+.hand--right {
+  transform: rotate(150deg) translate(-10px, 80px);
+}
+
+/* Class 'hide' được thêm vào bằng JS khi nhập password */
+.hand.hide {
+  transform: rotate(0deg) translate(0, 0); /* Tay đưa lên che mắt */
+}
+
+/* Ngón tay */
+.finger {
+  position: absolute;
+  top: -10px;
+  width: 18px;
+  height: 30px;
+  background-color: var(--black);
+  border-radius: 50% 50% 0 0;
+}
+.hand--left .finger:nth-child(1) { left: 5px; transform: rotate(-10deg); }
+.hand--left .finger:nth-child(2) { left: 25px; top: -15px; }
+.hand--left .finger:nth-child(3) { left: 45px; transform: rotate(10deg); }
+
+.hand--right .finger:nth-child(1) { right: 5px; transform: rotate(10deg); }
+.hand--right .finger:nth-child(2) { right: 25px; top: -15px; }
+.hand--right .finger:nth-child(3) { right: 45px; transform: rotate(-10deg); }
+
+/* --- CSS cho nút Show/Hide Password --- */
+.form-group .password-button {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--primary);
+  font-weight: bold;
+  z-index: 5;
+  user-select: none;
+}
+.form-group .password-button:hover {
+  color: #c49b2c;
+}

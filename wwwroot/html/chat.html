@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App Modern</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="/css/chat-style.css"> 
+</head>
+<body>
+
+<div class="container main-container">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h5>Chat App</h5>
+            <small class="text-muted" id="currentUserDisplay">Đang tải...</small>
+        </div>
+        
+        <div class="user-list" id="userList">
+            </div>
+
+        <div class="p-3 border-top mt-auto">
+            <button class="btn btn-outline-danger w-100 rounded-pill" onclick="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+            </button>
+        </div>
+    </div>
+
+    <div class="chat-area">
+        <div class="chat-header">
+            <div class="d-flex align-items-center">
+                <div id="currentReceiverAvatar" class="avatar" style="display:none; width:35px; height:35px; font-size:14px; margin-right:10px;">?</div>
+                <div class="chat-title" id="chatTitle">Hãy chọn một người để bắt đầu</div>
+            </div>
+            <div>
+                <button class="btn btn-light btn-sm rounded-circle"><i class="fa-solid fa-phone"></i></button>
+                <button class="btn btn-light btn-sm rounded-circle"><i class="fa-solid fa-video"></i></button>
+            </div>
+        </div>
+
+        <div class="messages-box" id="messagesBox">
+            <div class="text-center mt-5 text-muted">
+                 <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" width="100" style="opacity:0.5; margin-bottom:20px;">
+                 <p>Kết nối và trò chuyện ngay bây giờ!</p>
+             </div>
+        </div>
+
+        <div class="input-area">
+            <button class="btn btn-light rounded-circle text-muted"><i class="fa-solid fa-paperclip"></i></button>
+            <input type="text" id="msgInput" class="form-control border-0" placeholder="Nhập tin nhắn..." disabled>
+            <button class="btn-send" onclick="sendMessage()" id="btnSend" disabled>
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/chat.js"></script>
+</body>
+</html>
