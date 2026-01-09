@@ -1,43 +1,76 @@
-/* Import Font đẹp (Poppins) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-body {
-    background-color: #eef1f5;
-    font-family: 'Poppins', sans-serif;
-    height: 100vh;
-    overflow: hidden;
-    margin: 0;
+:root {
+    --primary-color: #0084ff; /* Màu xanh Messenger */
+    --bg-color: #f0f2f5;
+    --white: #ffffff;
+    --text-dark: #050505;
+    --text-gray: #65676b;
+    --hover-bg: #f2f2f2;
+    --sent-msg-bg: #0084ff;
+    --received-msg-bg: #e4e6eb;
 }
 
-.main-container {
-    height: 90vh;
-    margin-top: 5vh;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+body {
+    background-color: var(--bg-color);
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    margin: 0;
     overflow: hidden;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container chính nổi lên giữa màn hình */
+.main-container {
+    width: 95vw;
+    height: 90vh;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    overflow: hidden;
 }
 
 /* --- SIDEBAR (DANH BẠ) --- */
 .sidebar {
-    width: 320px;
-    background: #fff;
-    border-right: 1px solid #f0f0f0;
+    width: 360px;
+    border-right: 1px solid #e4e6eb;
     display: flex;
     flex-direction: column;
+    background-color: var(--white);
 }
 
 .sidebar-header {
-    padding: 20px;
-    background: #fff;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 16px 10px 16px;
 }
 
-.sidebar-header h5 {
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 5px;
+.sidebar-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Ô tìm kiếm */
+.search-box {
+    background-color: #f0f2f5;
+    border-radius: 20px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+}
+.search-box i { color: var(--text-gray); margin-right: 8px; }
+.search-box input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+    font-size: 15px;
 }
 
 .user-list {
@@ -46,56 +79,62 @@ body {
     padding: 10px;
 }
 
-/* Tùy chỉnh thanh cuộn */
-.user-list::-webkit-scrollbar, .messages-box::-webkit-scrollbar {
-    width: 6px;
-}
-.user-list::-webkit-scrollbar-thumb, .messages-box::-webkit-scrollbar-thumb {
-    background-color: #ddd;
-    border-radius: 10px;
-}
-
 .user-item {
     display: flex;
     align-items: center;
     padding: 12px;
-    border-radius: 12px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    margin-bottom: 5px;
+    transition: 0.2s;
 }
 
-.user-item:hover {
-    background-color: #f5f7fa;
-}
+.user-item:hover { background-color: var(--hover-bg); }
+.user-item.active { background-color: #eaf3ff; }
 
-.user-item.active {
-    background-color: #e6f0ff;
-}
-
+/* Avatar đẹp */
 .avatar {
-    width: 45px;
-    height: 45px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
+    background: linear-gradient(45deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    font-size: 18px;
-    margin-right: 15px;
-    flex-shrink: 0;
+    margin-right: 12px;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
-.user-info b {
-    display: block;
-    font-size: 15px;
-    color: #333;
+/* Chấm xanh Online */
+.status-dot {
+    width: 14px;
+    height: 14px;
+    background-color: #31a24c;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
 }
-.user-info span {
-    font-size: 12px;
-    color: #888;
+
+.user-info h6 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+.user-info p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-gray);
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
 }
 
 /* --- CHAT AREA --- */
@@ -103,102 +142,112 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: #f9fbfd;
+    background-color: var(--white);
 }
 
+/* Header người đang chat */
 .chat-header {
-    padding: 15px 25px;
-    background: #fff;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e4e6eb;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 65px;
+    background: var(--white);
 }
 
-.chat-title {
-    font-weight: 600;
-    color: #444;
-    font-size: 16px;
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
+.header-user h5 { margin: 0; font-size: 17px; font-weight: 600; }
+.header-user small { color: var(--text-gray); font-size: 12px; }
 
+.header-actions i {
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+.header-actions i:hover { background-color: var(--hover-bg); }
+
+/* Khung tin nhắn */
 .messages-box {
     flex: 1;
-    padding: 25px;
+    padding: 20px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
-/* --- BONG BÓNG CHAT --- */
 .message {
-    max-width: 65%;
-    padding: 12px 18px;
-    font-size: 14px;
-    line-height: 1.5;
+    max-width: 60%;
+    padding: 10px 15px;
+    font-size: 15px;
+    line-height: 1.4;
     position: relative;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    word-wrap: break-word;
 }
 
 .msg-sent {
     align-self: flex-end;
-    background: linear-gradient(135deg, #0061f2 0%, #00ba88 100%); /* Màu xanh gradient */
+    background-color: var(--sent-msg-bg);
     color: white;
-    border-radius: 18px 18px 0 18px; /* Bo góc trừ góc dưới phải */
+    border-radius: 18px 18px 4px 18px;
 }
 
 .msg-received {
     align-self: flex-start;
-    background: #fff;
-    color: #333;
-    border-radius: 18px 18px 18px 0; /* Bo góc trừ góc dưới trái */
-    border: 1px solid #eee;
+    background-color: var(--received-msg-bg);
+    color: var(--text-dark);
+    border-radius: 18px 18px 18px 4px;
 }
 
 .msg-time {
     display: block;
     font-size: 10px;
-    margin-top: 5px;
+    margin-top: 4px;
     opacity: 0.7;
     text-align: right;
 }
 
-/* --- INPUT AREA --- */
+/* Khung nhập liệu */
 .input-area {
-    padding: 20px;
-    background: #fff;
-    border-top: 1px solid #f0f0f0;
+    padding: 15px 20px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
-.input-area input {
-    border-radius: 25px;
-    padding: 12px 20px;
-    border: 1px solid #eee;
-    background: #f8f9fa;
+.input-wrapper {
+    flex: 1;
+    background-color: #f0f2f5;
+    border-radius: 20px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
 }
-.input-area input:focus {
-    background: #fff;
-    box-shadow: 0 0 0 3px rgba(0, 97, 242, 0.1);
-    border-color: #0061f2;
+
+.input-wrapper input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+    font-size: 15px;
 }
 
 .btn-send {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: #0061f2;
-    color: white;
     border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    transition: 0.3s;
+    background: transparent;
+    color: var(--primary-color);
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.2s;
 }
-.btn-send:hover {
-    background: #004bbd;
-    transform: scale(1.05);
-}
+.btn-send:hover { transform: scale(1.1); }
+.btn-send:disabled { color: #ccc; cursor: default; }

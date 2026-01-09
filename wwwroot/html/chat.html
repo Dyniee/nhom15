@@ -3,60 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat App Modern</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Messenger | Chat App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="/css/chat-style.css"> 
+    <link rel="stylesheet" href="/css/chat-style.css">
 </head>
 <body>
 
-<div class="container main-container">
+<div class="main-container">
+    
     <div class="sidebar">
         <div class="sidebar-header">
-            <h5>Chat App</h5>
-            <small class="text-muted" id="currentUserDisplay">Đang tải...</small>
-        </div>
-        
-        <div class="user-list" id="userList">
+            <div class="sidebar-title">
+                Chat
+                <div class="header-actions" style="display:inline-block">
+                     <i class="fa-solid fa-right-from-bracket" onclick="logout()" title="Đăng xuất" style="color:#333; font-size:18px;"></i>
+                </div>
             </div>
+            
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Tìm kiếm trên Chat App">
+            </div>
+        </div>
 
-        <div class="p-3 border-top mt-auto">
-            <button class="btn btn-outline-danger w-100 rounded-pill" onclick="logout()">
-                <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
-            </button>
+        <div class="user-list" id="userList">
+            <div style="text-align:center; padding:20px; color:#999">Đang tải danh bạ...</div>
         </div>
     </div>
 
     <div class="chat-area">
-        <div class="chat-header">
-            <div class="d-flex align-items-center">
-                <div id="currentReceiverAvatar" class="avatar" style="display:none; width:35px; height:35px; font-size:14px; margin-right:10px;">?</div>
-                <div class="chat-title" id="chatTitle">Hãy chọn một người để bắt đầu</div>
+        
+        <div class="chat-header" id="chatHeader" style="visibility:hidden">
+            <div class="header-user">
+                <div class="avatar" id="headerAvatar" style="width:40px; height:40px; font-size:16px;">?</div>
+                <div>
+                    <h5 id="chatTitle">Tên người dùng</h5>
+                    <small>Đang hoạt động</small>
+                </div>
             </div>
-            <div>
-                <button class="btn btn-light btn-sm rounded-circle"><i class="fa-solid fa-phone"></i></button>
-                <button class="btn btn-light btn-sm rounded-circle"><i class="fa-solid fa-video"></i></button>
+            <div class="header-actions">
+                <i class="fa-solid fa-phone"></i>
+                <i class="fa-solid fa-video"></i>
+                <i class="fa-solid fa-circle-info"></i>
             </div>
         </div>
 
-        <div class="messages-box" id="messagesBox">
-            <div class="text-center mt-5 text-muted">
-                 <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" width="100" style="opacity:0.5; margin-bottom:20px;">
-                 <p>Kết nối và trò chuyện ngay bây giờ!</p>
-             </div>
+        <div id="welcomeScreen" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#ccc;">
+            <i class="fa-brands fa-facebook-messenger" style="font-size: 80px; color: #0084ff; margin-bottom:20px;"></i>
+            <h3>Chào mừng đến với Chat App</h3>
+            <p>Chọn một người bạn để bắt đầu trò chuyện</p>
         </div>
+
+        <div class="messages-box" id="messagesBox" style="display:none">
+            </div>
 
         <div class="input-area">
-            <button class="btn btn-light rounded-circle text-muted"><i class="fa-solid fa-paperclip"></i></button>
-            <input type="text" id="msgInput" class="form-control border-0" placeholder="Nhập tin nhắn..." disabled>
-            <button class="btn-send" onclick="sendMessage()" id="btnSend" disabled>
+            <i class="fa-solid fa-circle-plus" style="color:#0084ff; font-size:20px; cursor:pointer;"></i>
+            <i class="fa-solid fa-image" style="color:#0084ff; font-size:20px; cursor:pointer; margin-left:10px;"></i>
+            
+            <div class="input-wrapper" style="margin-left:10px;">
+                <input type="text" id="msgInput" placeholder="Nhập tin nhắn..." disabled>
+                <i class="fa-solid fa-face-smile" style="color:#0084ff; cursor:pointer;"></i>
+            </div>
+            
+            <button class="btn-send" id="btnSend" onclick="sendMessage()" disabled>
                 <i class="fa-solid fa-paper-plane"></i>
             </button>
         </div>
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
 <script src="/js/chat.js"></script>
+
 </body>
 </html>

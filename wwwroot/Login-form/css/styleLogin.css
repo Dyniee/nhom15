@@ -2,57 +2,55 @@
   --bg-color: #f8f9fd;
   --white: #ffffff;
   --black: #000000;
-  --primary: #e3b04b;
   --placeholder: #999;
 }
 
-/* Căn chỉnh vị trí con gấu */
+/* --- QUAN TRỌNG: CĂN CHỈNH VỊ TRÍ GẤU --- */
 .center {
   position: relative;
-  top: 20px; /* Điều chỉnh vị trí gấu so với form */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
-  background-color: transparent;
-  z-index: 1; /* Nằm trên nền nhưng dưới form nếu cần */
+  width: 180px;  /* Thu nhỏ khung chứa gấu lại một chút */
+  height: 150px; /* Chiều cao cố định để đẩy Form xuống dưới */
+  margin: 0 auto 10px auto; /* Canh giữa và tạo khoảng cách dưới */
+  z-index: 1;
 }
 
-/* --- CẤU TRÚC ĐẦU GẤU --- */
+/* Đầu gấu */
 .face {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 160px;
-  height: 160px;
+  width: 130px; /* Thu nhỏ mặt gấu (cũ là 160px) */
+  height: 130px;
   background-color: var(--white);
   border-radius: 50%;
-  border: 4px solid var(--black);
-  transform: translate(-50%, -50%);
+  border: 3px solid var(--black);
+  transform: translate(-50%, -50%); /* Canh giữa tuyệt đối vào khung .center */
   overflow: hidden;
   z-index: 10;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Thêm bóng cho mặt gấu nổi lên */
 }
 
+/* Tai gấu */
 .ear {
   position: absolute;
-  top: 10px;
-  width: 50px;
-  height: 50px;
+  top: 15px; /* Chỉnh lại vị trí tai cho hợp với mặt nhỏ */
+  width: 40px;
+  height: 40px;
   background-color: var(--black);
   border-radius: 50%;
   z-index: 5;
 }
-.ear--left { left: 10px; }
-.ear--right { right: 10px; }
+.ear--left { left: 15px; }
+.ear--right { right: 15px; }
 
-/* --- MẮT --- */
+/* Mắt */
 .eyes {
   position: absolute;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100px;
-  height: 40px;
+  width: 80px;
+  height: 30px;
   display: flex;
   justify-content: space-between;
   z-index: 15;
@@ -60,23 +58,22 @@
 
 .eye {
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   background-color: var(--black);
   border-radius: 50%;
 }
-
 .eye .glow {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 8px;
-  height: 8px;
+  top: 4px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
   background-color: var(--white);
   border-radius: 50%;
 }
 
-/* --- MŨI --- */
+/* Mũi */
 .nose {
   position: absolute;
   top: 55%;
@@ -84,19 +81,9 @@
   transform: translate(-50%, -50%);
   z-index: 15;
 }
-.nose svg { width: 30px; }
-.nose .glow {
-  position: absolute;
-  top: 2px;
-  right: 8px;
-  width: 8px;
-  height: 4px;
-  background-color: var(--white);
-  border-radius: 50%;
-  opacity: 0.6;
-}
+.nose svg { width: 20px; } /* Thu nhỏ mũi */
 
-/* --- MIỆNG --- */
+/* Miệng */
 .mouth {
   position: absolute;
   top: 65%;
@@ -104,98 +91,74 @@
   transform: translate(-50%, -50%);
   z-index: 15;
 }
-.mouth svg { width: 40px; fill: none; stroke: var(--black); stroke-width: 3px; stroke-linecap: round; }
+.mouth svg { width: 30px; fill: none; stroke: var(--black); stroke-width: 3px; stroke-linecap: round; }
 
-/* Lưỡi (khi không nhập pass) */
+/* Lưỡi */
 .tongue {
   position: absolute;
   top: 5px;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 20px;
-  height: 16px;
+  width: 16px;
+  height: 12px;
   background-color: #ff6b6b;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   transition: 0.3s;
-  opacity: 0; /* Mặc định ẩn, hiện khi focus */
+  opacity: 0;
 }
 .tongue.breath {
   animation: breath 1s infinite alternate;
   opacity: 1;
 }
-
 @keyframes breath {
-  0% { height: 16px; }
-  100% { height: 20px; }
+  0% { height: 12px; }
+  100% { height: 16px; }
 }
 
-/* --- TAY (Che mắt) --- */
+/* --- TAY GẤU (QUAN TRỌNG: Phải khớp với mặt nhỏ) --- */
 .hands {
   position: absolute;
-  bottom: -20px;
+  bottom: -5px;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 180px;
-  height: 100px;
+  width: 140px; /* Thu hẹp khoảng cách 2 tay */
+  height: 80px;
   display: flex;
   justify-content: space-between;
   z-index: 20;
-  pointer-events: none; /* Không chặn click chuột vào form */
+  pointer-events: none;
 }
 
 .hand {
   position: relative;
-  width: 70px;
-  height: 80px;
+  width: 55px; /* Tay nhỏ lại */
+  height: 65px;
   background-color: var(--black);
   border-radius: 30px 30px 0 0;
   transform-origin: bottom center;
   transition: transform 0.4s ease-in-out;
 }
 
-.hand--left {
-  transform: rotate(-150deg) translate(10px, 80px); 
-}
-.hand--right {
-  transform: rotate(150deg) translate(-10px, 80px);
-}
+/* Vị trí tay lúc mở mắt */
+.hand--left { transform: rotate(-150deg) translate(10px, 60px); }
+.hand--right { transform: rotate(150deg) translate(-10px, 60px); }
 
-/* Class 'hide' được thêm vào bằng JS khi nhập password */
-.hand.hide {
-  transform: rotate(0deg) translate(0, 0); /* Tay đưa lên che mắt */
-}
+/* Vị trí tay lúc che mắt (Class .hide thêm bởi JS) */
+.hand.hide { transform: rotate(0deg) translate(0, 0); }
 
-/* Ngón tay */
 .finger {
   position: absolute;
-  top: -10px;
-  width: 18px;
-  height: 30px;
+  top: -8px;
+  width: 14px;
+  height: 25px;
   background-color: var(--black);
   border-radius: 50% 50% 0 0;
 }
-.hand--left .finger:nth-child(1) { left: 5px; transform: rotate(-10deg); }
-.hand--left .finger:nth-child(2) { left: 25px; top: -15px; }
-.hand--left .finger:nth-child(3) { left: 45px; transform: rotate(10deg); }
+.hand--left .finger:nth-child(1) { left: 4px; transform: rotate(-10deg); }
+.hand--left .finger:nth-child(2) { left: 20px; top: -12px; }
+.hand--left .finger:nth-child(3) { left: 36px; transform: rotate(10deg); }
 
-.hand--right .finger:nth-child(1) { right: 5px; transform: rotate(10deg); }
-.hand--right .finger:nth-child(2) { right: 25px; top: -15px; }
-.hand--right .finger:nth-child(3) { right: 45px; transform: rotate(-10deg); }
-
-/* --- CSS cho nút Show/Hide Password --- */
-.form-group .password-button {
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 14px;
-  color: var(--primary);
-  font-weight: bold;
-  z-index: 5;
-  user-select: none;
-}
-.form-group .password-button:hover {
-  color: #c49b2c;
-}
+.hand--right .finger:nth-child(1) { right: 4px; transform: rotate(10deg); }
+.hand--right .finger:nth-child(2) { right: 20px; top: -12px; }
+.hand--right .finger:nth-child(3) { right: 36px; transform: rotate(-10deg); }
